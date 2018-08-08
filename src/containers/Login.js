@@ -23,10 +23,14 @@ export default class Login extends Component {
     });
   }
 
+  handleSubmit = (event) => {
+    event.preventDefault();
+  }
+
   render() {
     return (
       <div className="Login">
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <FormGroup controlId="email" bsSize="large">
             <ControlLabel>Email</ControlLabel>
             <FormControl
