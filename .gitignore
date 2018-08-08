@@ -16,6 +16,9 @@
 .env.test.local
 .env.production.local
 
+# AWS configure
+/src/config.js
+
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
