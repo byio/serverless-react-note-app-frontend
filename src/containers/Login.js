@@ -13,6 +13,10 @@ export default class Login extends Component {
     }
   }
 
+  validateForm() {
+    return this.state.email.length > 0 && this.state.password.length > 0;
+  }
+
   render() {
     return (
       <div className="Login">
@@ -35,6 +39,7 @@ export default class Login extends Component {
           <Button
             block
             bsSize="large"
+            disabled={!this.validateForm()}
             type="submit"
           >
             Login
