@@ -44,6 +44,7 @@ export default class Login extends Component {
             <FormControl
               autoFocus
               type="email"
+              placeholder="jane.doe@email.com"
               value={this.state.email}
               onChange={this.handleChange}
             />
@@ -52,6 +53,8 @@ export default class Login extends Component {
             <ControlLabel>Password</ControlLabel>
             <FormControl
               type="password"
+              autoComplete="new-password"
+              placeholder="Enter password"
               value={this.state.password}
               onChange={this.handleChange}
             />
