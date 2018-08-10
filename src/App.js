@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { Nav, Navbar, NavItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
@@ -21,6 +21,19 @@ class App extends Component {
     });
   }
 
+  renderAuthButtons = () => {
+    return this.state.isAutheticated ?
+      <NavItem>Log Out</NavItem> :
+      <Fragment>
+        <LinkContainer to="/signup">
+          <NavItem>Sign Up</NavItem>
+        </LinkContainer>
+        <LinkContainer to="/login">
+          <NavItem>Login</NavItem>
+        </LinkContainer>
+      </Fragment>
+  }
+
   render() {
     const childProps = {
       isAutheticated: this.state.isAutheticated,
@@ -38,12 +51,7 @@ class App extends Component {
           </Navbar.Header>
           <Navbar.Collapse>
             <Nav pullRight>
-              <LinkContainer to="/signup">
-                <NavItem>Sign Up</NavItem>
-              </LinkContainer>
-              <LinkContainer to="/login">
-                <NavItem>Login</NavItem>
-              </LinkContainer>
+              {this.renderAuthButtons()}
             </Nav>
           </Navbar.Collapse>
         </Navbar>
