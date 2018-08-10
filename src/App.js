@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { Nav, Navbar, NavItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
+import { Auth } from 'aws-amplify';
 
 import Routes from './Routes';
 import './App.css';
@@ -11,8 +12,23 @@ class App extends Component {
     super(props);
 
     this.state = {
-      isAutheticated: false
+      isAutheticated: false,
+      isAuthenticating: true
     };
+  }
+
+  async componentDidMount() {
+    try {
+      if (await Auth.currentSession()) {
+        this.userHasAuthenticated(true);
+      }
+    } catch(error) {
+      if (error !== 'No current user') {
+        alert(error);
+      }
+    }
+
+    this.setState({ isAuthenticated: false });
   }
 
   userHasAuthenticated = (authenticated) => {
