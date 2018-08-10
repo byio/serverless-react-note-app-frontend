@@ -21,9 +21,13 @@ class App extends Component {
     });
   }
 
+  handleLogout = () => {
+    this.userHasAuthenticated(false);
+  }
+
   renderAuthButtons = () => {
     return this.state.isAutheticated ?
-      <NavItem>Log Out</NavItem> :
+      <NavItem onClick={this.handleLogout}>Log Out</NavItem> :
       <Fragment>
         <LinkContainer to="/signup">
           <NavItem>Sign Up</NavItem>
