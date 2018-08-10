@@ -10,8 +10,6 @@ export default ({
   // function returns a Route component with props and a render function that returns the component passed through props from the Routes component
   <Route
     {...rest}
-    render={(props) => {
-      <C {...props} {...cProps} />
-    }}
+    render={(props) => <C {...props} {...cProps} /> }
   />
 );
