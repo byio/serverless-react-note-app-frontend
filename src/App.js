@@ -22,6 +22,11 @@ class App extends Component {
   }
 
   render() {
+    const childProps = {
+      isAutheticated: this.state.isAutheticated,
+      userHasAuthenticated: this.userHasAuthenticated
+    };
+
     return (
       <div className="App container">
         <Navbar fluid collapseOnSelect>
@@ -42,7 +47,7 @@ class App extends Component {
             </Nav>
           </Navbar.Collapse>
         </Navbar>
-        <Routes />
+        <Routes childProps={childProps} />
       </div>
     );
   }
