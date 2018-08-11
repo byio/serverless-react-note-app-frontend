@@ -18,14 +18,19 @@ class App extends Component {
   }
 
   async componentDidMount() {
+    console.log(`componentDidMount running`);
     try {
-      if (await Auth.currentSession()) {
+      console.log('running try block');
+      const session = await Auth.currentSession();
+      console.log(`user is logged in: ${session}`);
+      if (session) {
         this.userHasAuthenticated(true);
       }
     } catch(error) {
-      if (error !== 'No current user') {
-        alert(error);
-      }
+      // if (error !== 'No current user') {
+      //   alert(error);
+      // }
+      console.log(error);
     }
 
     this.setState({ isAuthenticated: false });
@@ -61,6 +66,7 @@ class App extends Component {
     };
 
     return (
+      !this.state.isAutheticating &&
       <div className="App container">
         <Navbar fluid collapseOnSelect>
           <Navbar.Header>
